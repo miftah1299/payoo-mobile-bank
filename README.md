@@ -26,7 +26,8 @@ payoo-mobile-bank/
 ├── index.html
 ├── home.html
 ├── images/
-└── js/
+├── js/
+└── styles/
 ```
 
 ## Getting Started

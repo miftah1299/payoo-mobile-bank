@@ -1,109 +1,83 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Payoo Home Page</title>
-    <!-- daisy ui cdn -->
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
-    <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Payoo - Home</title>
+    <link rel="stylesheet" href="styles/index.css" />
 </head>
 
 <body>
-    <main class="flex justify-center">
-        <div class="mockup-phone">
-            <div class="camera"></div>
-            <div class="display">
-                <div class="artboard artboard-demo phone-3 bg-slate-100">
-                    <!-- avilable balance -->
-                    <div>
-                        <div class="stats shadow bg-purple-300">
-                            <div class="stat">
-                                <div class="stat-value">$<span id="balance">4500</span></div>
-                                <div class="stat-desc">Avilable Balance</div>
-                            </div>
-                        </div>
+    <div class="phone-shell">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+            <div class="screen-scroll">
+
+                <!-- Balance Header -->
+                <div class="balance-header">
+                    <div class="brand-row">
+                        <span class="home-brand-name">💳 Payoo</span>
+                        <div class="avatar">👤</div>
                     </div>
-                    <!-- divider -->
-                    <div class="divider"></div>
-                    <!-- user action buttons -->
-                    <div class="grid grid-cols-2 gap-4">
-                        <button id="btn-toggle-add-money" class="btn btn-outline text-green-600">Add Money</button>
-                        <button id="btn-toggle-cashout" class="btn btn-outline text-red-600">Cashout</button>
-                        <button id="btn-toggle-transaction"
-                            class="btn btn-outline text-blue-600 col-span-2">Transactions</button>
-                    </div>
-                    <!-- divider -->
-                    <div class="divider"></div>
-
-                    <!-- add money form -->
-                    <div id="add-money-form" class="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-                        <form class="card-body">
-                            <div class="form-control">
-                                <label class="label">
-                                    <span class="label-text">Amount to Add</span>
-                                </label>
-                                <input id="add-money" type="text" placeholder="Add amount to account"
-                                    class="input input-bordered rounded-full" required />
-                            </div>
-                            <div class="form-control">
-                                <label class="label">
-                                    <span class="label-text">Pin Number</span>
-                                </label>
-                                <input id="pin" type="password" placeholder="Enter a 4 digit pin number"
-                                    class="input input-bordered rounded-full" autocomplete="off" required />
-                                <!-- <label class="label">
-                                    <a href="#" class="label-text-alt link link-hover">Forgot password?</a>
-                                </label> -->
-                            </div>
-                            <div class="form-control mt-6">
-                                <button id="btn-add-money"
-                                    class="btn btn-primary btn-rounded rounded-full bg-blue-600 border ">Add
-                                    Money</button>
-                            </div>
-                        </form>
-                    </div>
-
-
-
-                    <!-- cashout form -->
-                    <div id="cashout-form" class="hidden card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-                        <form class="card-body">
-                            <div class="form-control">
-                                <label class="label">
-                                    <span class="label-text">Amount</span>
-                                </label>
-                                <input id="cashout" type="text" placeholder="Add amount to withdraw"
-                                    class="input input-bordered rounded-full" required />
-                            </div>
-                            <div class="form-control">
-                                <label class="label">
-                                    <span class="label-text">Pin Number</span>
-                                </label>
-                                <input id="cashout-pin" type="password" placeholder="Enter a 4 digit pin number"
-                                    class="input input-bordered rounded-full" autocomplete="off" required />
-                            </div>
-                            <div class="form-control mt-6">
-                                <button id="btn-cashout"
-                                    class="btn btn-primary btn-rounded rounded-full bg-blue-600 border ">Withdraw
-                                    Money</button>
-                            </div>
-                        </form>
-                    </div>
-
-
-
-                    <!-- transaction history -->
-                    <div id="transactions" class="hidden">
-                        <h2 class="text-5xl text-center">Transaction History</h2>
-                        <div id="transaction-container" class="space-y-3">
-
-                        </div>
+                    <div class="balance-label">Available Balance</div>
+                    <div class="balance-amount">
+                        <span class="balance-currency">$</span>
+                        <span id="balance">4500</span>
                     </div>
                 </div>
+
+                <!-- Action Buttons -->
+                <div class="actions-wrap">
+                    <button id="btn-toggle-add-money" class="action-btn btn-add">
+                        <div class="btn-icon">➕</div>
+                        Add Money
+                    </button>
+                    <button id="btn-toggle-cashout" class="action-btn btn-cashout">
+                        <div class="btn-icon">💸</div>
+                        Cash Out
+                    </button>
+                    <button id="btn-toggle-transaction" class="action-btn btn-history">
+                        <div class="btn-icon">📋</div>
+                        Transactions
+                    </button>
+                </div>
+
+                <!-- Add Money Form -->
+                <div id="add-money-form" class="panel">
+                    <div class="panel-title">Add Money</div>
+                    <form>
+                        <label class="form-label" for="add-money">Amount</label>
+                        <input id="add-money" class="form-input" type="number" placeholder="Enter amount" required />
+                        <label class="form-label" for="pin">PIN</label>
+                        <input id="pin" class="form-input" type="password" placeholder="4-digit PIN" maxlength="4"
+                            autocomplete="off" required />
+                        <button id="btn-add-money" class="submit-btn submit-add">Add Money</button>
+                    </form>
+                </div>
+
+                <!-- Cashout Form -->
+                <div id="cashout-form" class="panel hidden">
+                    <div class="panel-title">Cash Out</div>
+                    <form>
+                        <label class="form-label" for="cashout">Amount</label>
+                        <input id="cashout" class="form-input" type="number" placeholder="Enter amount" required />
+                        <label class="form-label" for="cashout-pin">PIN</label>
+                        <input id="cashout-pin" class="form-input" type="password" placeholder="4-digit PIN"
+                            maxlength="4" autocomplete="off" required />
+                        <button id="btn-cashout" class="submit-btn submit-cashout">Withdraw Money</button>
+                    </form>
+                </div>
+
+                <!-- Transaction History -->
+                <div id="transactions" class="hidden">
+                    <div class="txn-header">Transaction History</div>
+                    <div id="transaction-container"></div>
+                </div>
+
             </div>
-    </main>
+        </div>
+    </div>
 
     <!-- javascript -->
     <script src="js/utilities.js"></script>
